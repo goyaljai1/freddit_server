@@ -1,5 +1,3 @@
-const uri = "mongodb://localhost:27017/reddit-clone";
-
 const mongoose = require("mongoose");
 const { Schema } = mongoose;
 
@@ -7,7 +5,7 @@ let connection;
 
 async function connectToMongoDB() {
   if (!connection) {
-    connection = await mongoose.connect(uri);
+    connection = await mongoose.connect(process.env.MONGO_URI);
   }
   return connection;
 }
